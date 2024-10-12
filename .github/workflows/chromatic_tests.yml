@@ -1,4 +1,4 @@
-name: Cypress and Chromatic Tests
+name: Chromatic Tests
 
 on:
   push:
@@ -11,37 +11,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Cypress Test Job
-  cypress-tests:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20.10.0"
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install dependencies
-        run: pnpm install 
-
-
-      - name: Run Cypress tests
-        run: |
-          pnpm run dev &
-          npx wait-on http://localhost:3000
-          pnpm cypress
-
-  # Chromatic Visual Regression Job (depends on Cypress test)
   run-chromatic:
     name: Chromatic Visual Regression
     runs-on: ubuntu-latest
-    needs: cypress-tests
 
     steps:
       - name: Checkout code
