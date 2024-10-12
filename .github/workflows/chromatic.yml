@@ -57,16 +57,11 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: List contents of app directory
-        run: ls -al ./nuxt-app
-
       - name: Install dependencies
         run: pnpm install
-        working-directory: ./nuxt-app
 
       - name: Start server
         run: pnpm run dev &
-        working-directory: ./nuxt-app
 
       - name: Wait for server to be ready
         run: |
@@ -104,13 +99,8 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: List contents of nuxt-app directory
-        run: ls -al ./nuxt-app
-
       - name: Install dependencies
         run: pnpm install
-        working-directory: ./nuxt-app
 
       - name: Publish to Chromatic
         run: pnpm run chromatic -- --auto-accept-changes
-        working-directory: ./nuxt-app
