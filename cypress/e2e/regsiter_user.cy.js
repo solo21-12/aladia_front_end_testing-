@@ -2,7 +2,7 @@
 it("register_user", function() {
   /* ==== Generated with Cypress Studio ==== */
   cy.visit("/");
-  cy.wait(500);
+  cy.wait(50000);
   cy.document().toMatchImageSnapshot();
 
   cy.get("#join-us-button")

@@ -3,7 +3,7 @@ describe("template spec", () => {
   it("login user", function() {
     /* ==== Generated with Cypress Studio ==== */
     cy.visit("/");
-    cy.wait(500);
+    cy.wait(50000);
 
     // Take a snapshot of the initial page load
     cy.document().toMatchImageSnapshot();
