@@ -76,7 +76,10 @@ jobs:
           done
 
       - name: Cypress Run
-        run: ELECTRON_EXTRA_LAUNCH_ARGS=--remote-debugging-port=9222 npx cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          start: pnpm run dev
 
   run-chromatic:
     name: Chromatic Visual Regression
