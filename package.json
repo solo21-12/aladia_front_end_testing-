@@ -20,7 +20,8 @@
     "pinia": "^2.2.4",
     "vue": "latest",
     "vue-router": "latest",
-    "vuetify": "^3.7.2"
+    "vuetify": "^3.7.2",
+    "wait-on": "^8.0.1"
   },
   "devDependencies": {
     "@chromatic-com/cypress": "^0.8.0",
