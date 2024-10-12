@@ -25,4 +25,4 @@ logs
 
 cypress/screenshots/
 cypress/e2e/__image_snapshots__/
-cypress/downloads/
+# cypress/downloads/
