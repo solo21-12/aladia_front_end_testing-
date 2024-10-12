@@ -1,24 +1,28 @@
-name: Cypress Tests using Cypress Docker Image
+name: Cypress Tests
 
 on: push
 
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
-    container:
-      image: cypress/browsers:node-20.14.0-chrome-126.0.6478.114-1-ff-127.0.1-edge-126.0.2592.61-1
-      options: --user 1001
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install pnpm
         run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build the application
+        run: pnpm run build
+
+      - name: Start the application
+        run: pnpm run preview & # Run preview in background
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm run dev
-          browser: chrome
+          wait-on: 'http://localhost:3000' # Wait for the application to be ready
+          start: pnpm run preview
