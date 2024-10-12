@@ -36,4 +36,4 @@ jobs:
         run: npx wait-on http://localhost:3000
 
       - name: Run Cypress tests
-        run: pnpm exec cypress run
+        run: pnpm cypress
