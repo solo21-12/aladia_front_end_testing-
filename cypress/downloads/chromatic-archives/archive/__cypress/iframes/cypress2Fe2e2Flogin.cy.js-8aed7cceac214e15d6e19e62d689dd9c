@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>cypress/e2e/regsiter_user.cy.js</title>
+    <title>cypress/e2e/login.cy.js</title>
   </head>
   <body>
     <script>
@@ -254,13 +254,13 @@
 ({
       browserFamily: 'chromium',
       isSpecBridge: false,
-      key: 'ad50d575-3a28-4988-a541-8590dfc12039',
+      key: '4429adb2-c84a-4ae1-a6ff-c110067dba1c',
       namespace: '__cypress',
-      scripts: '["/__cypress/tests?p=cypress/support/e2e.js","/__cypress/tests?p=cypress/e2e/regsiter_user.cy.js"]',
-      url: 'http://localhost:41573/__cypress/iframes/cypress%2Fe2e%2Fregsiter_user.cy.js?browserFamily=chromium'
+      scripts: '["/__cypress/tests?p=cypress/support/e2e.js","/__cypress/tests?p=cypress/e2e/login.cy.js"]',
+      url: 'http://localhost:3000/__cypress/iframes/cypress%2Fe2e%2Flogin.cy.js?browserFamily=chromium'
     })</script>
     <script>
-      window.Cypress.onSpecWindow(window, [{"absolute":"/home/dawit/projects/current/upwork/test/cypress/support/e2e.js","relative":"cypress/support/e2e.js","relativeUrl":"/__cypress/tests?p=cypress/support/e2e.js"},{"absolute":"/home/dawit/projects/current/upwork/test/cypress/e2e/regsiter_user.cy.js","relative":"cypress/e2e/regsiter_user.cy.js","relativeUrl":"/__cypress/tests?p=cypress/e2e/regsiter_user.cy.js"}]);
+      window.Cypress.onSpecWindow(window, [{"absolute":"/home/dawit/projects/current/upwork/test/cypress/support/e2e.js","relative":"cypress/support/e2e.js","relativeUrl":"/__cypress/tests?p=cypress/support/e2e.js"},{"absolute":"/home/dawit/projects/current/upwork/test/cypress/e2e/login.cy.js","relative":"cypress/e2e/login.cy.js","relativeUrl":"/__cypress/tests?p=cypress/e2e/login.cy.js"}]);
     </script>
   </body>
 </html>
