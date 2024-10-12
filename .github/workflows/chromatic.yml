@@ -26,11 +26,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-        working-directory: ./nuxt-app
 
       - name: Build projects
         run: pnpm build
-        working-directory: ./nuxt-app
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
@@ -54,18 +52,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
 
       - name: Install pnpm
         run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
-        working-directory: ./nuxt-app
 
       - name: Start server
         run: pnpm run dev &
-        working-directory: ./nuxt-app
+        # No need to specify a working directory as you are in the root directory
 
       - name: Wait for server to be ready
         run: |
@@ -84,7 +81,7 @@ jobs:
         with:
           browser: chrome
           start: pnpm run dev
-          working-directory: ./nuxt-app
+          # No need to specify a working directory as you are in the root directory
 
   run-chromatic:
     name: Chromatic Visual Regression
@@ -106,8 +103,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-        working-directory: ./nuxt-app
 
       - name: Publish to Chromatic
         run: pnpm run chromatic -- --auto-accept-changes
-        working-directory: ./nuxt-app
