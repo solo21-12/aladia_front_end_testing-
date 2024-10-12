@@ -1,25 +1,45 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
-import AppNavBar from "../components/organisms/AppNavBar.vue";
+import { defineComponent, provide } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
+import AppNavBar from '../components/organisms/AppNavBar.vue';
+
+// Mock components to avoid dependency issues
+const MockAppJoinUsButton = {
+  template: '<button @click="$emit(\'toggle-signup\')">Join Us</button>',
+};
+
+const MockAppSearchInput = {
+  template: '<input type="text" placeholder="Search..." />',
+};
 
 const meta: Meta<typeof AppNavBar> = {
-  title: "Organisms/AppNavBar",
+  title: 'Organisms/AppNavBar',
   component: AppNavBar,
-  tags: ["autodocs"], // For generating autodocs
+  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof AppNavBar>;
 
-// Default story
-export const Default: Story = {
-  args: {
-    isSignUpVisible: false,
+// Mock Nuxt instance
+const mockNuxtInstance = {
+  $router: {
+    push: () => {},
+  },
+  $store: {
+    state: {},
+    dispatch: () => {},
   },
 };
 
-// Story for when sign-up is visible
-export const SignUpVisible: Story = {
-  args: {
-    isSignUpVisible: true,
-  },
+// Default story
+export const Default: Story = {
+  render: () => ({
+    components: { AppNavBar, MockAppJoinUsButton, MockAppSearchInput },
+    setup() {
+      provide('$nuxt', mockNuxtInstance); // Provide the mock Nuxt instance
+      return {};
+    },
+    template: '<AppNavBar :isSignUpVisible="false" />',
+  }),
 };
+
