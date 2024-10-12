@@ -1,4 +1,4 @@
-name: Main branch build and scan
+name: Main Branch Build and Test
 
 on:
   push:
@@ -15,16 +15,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set script permissions
-        run: chmod +x ./build.sh
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
+
       - name: Install pnpm
         run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Build projects
-        run: ./build.sh
+        run: pnpm build
+
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
         with:
@@ -81,7 +86,6 @@ jobs:
           browser: chrome
           start: pnpm run dev
           working-directory: ./nuxt-app
-
   run-chromatic:
     name: Chromatic Visual Regression
     runs-on: ubuntu-latest
