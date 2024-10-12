@@ -26,9 +26,11 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+        working-directory: ./nuxt-app
 
       - name: Build projects
         run: pnpm build
+        working-directory: ./nuxt-app
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
@@ -59,9 +61,11 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+        working-directory: ./nuxt-app
 
       - name: Start server
         run: pnpm run dev &
+        working-directory: ./nuxt-app
 
       - name: Wait for server to be ready
         run: |
@@ -81,6 +85,7 @@ jobs:
           browser: chrome
           start: pnpm run dev
           working-directory: ./nuxt-app
+
   run-chromatic:
     name: Chromatic Visual Regression
     runs-on: ubuntu-latest
@@ -101,6 +106,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+        working-directory: ./nuxt-app
 
       - name: Publish to Chromatic
         run: pnpm run chromatic -- --auto-accept-changes
+        working-directory: ./nuxt-app
