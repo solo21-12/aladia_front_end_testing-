@@ -1,7 +1,7 @@
 /* ==== Test Created with Cypress Studio ==== */
 it("register_user", function () {
   /* ==== Generated with Cypress Studio ==== */
-  cy.visit("http://localhost:3000/");
+  cy.visit("/");
   cy.wait(500);
   cy.document().toMatchImageSnapshot();
 
