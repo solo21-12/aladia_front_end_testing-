@@ -1,7 +1,7 @@
 import { defineConfig } from "cypress";
 import { installPlugin as chromaticPlugin } from "@chromatic-com/cypress";
 // Fix the import for cypress-plugin-snapshots
-import { initPlugin as snapshotsPlugin } from 'cypress-plugin-snapshots/plugin.js';
+import { initPlugin as snapshotsPlugin } from "cypress-plugin-snapshots/plugin.js";
 
 export default defineConfig({
   e2e: {
@@ -14,6 +14,7 @@ export default defineConfig({
 
       return config;
     },
-    experimentalStudio: true, // Enable Cypress Studio if needed
+    experimentalStudio: true,
+    baseUrl: "http://localhost:3000",
   },
 });
