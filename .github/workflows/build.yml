@@ -1,32 +1,32 @@
-name: Build Projects
+name: Build Nuxt Project
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
-    types: [opened, synchronize, reopened]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  build_projects:
-    name: Release build and tests
+  build:
+    name: Build Nuxt Project
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout the code from the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Install pnpm globally
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Set script permissions
-        run: chmod +x build.sh
+      # Install project dependencies using pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.10.0"
-
-      - name: Build projects
-        run: ./build.sh
-
+      # Build the Nuxt project
+      - name: Build Nuxt project
+        run: pnpm run build
