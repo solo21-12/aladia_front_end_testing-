@@ -15,6 +15,6 @@ export default defineConfig({
       return config;
     },
     experimentalStudio: true,
-    baseUrl: "https://localhost:3000/",
+    baseUrl: "http://localhost:3000/",
   },
 });

@@ -24,19 +24,11 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install 
 
-      - name: Start your app
-        run: |
-          pnpm run dev &
-          sleep 10  # Adjust the duration if needed
-          curl http://localhost:3000 || echo "App not reachable"
-        env:
-          HOST: localhost
-          PORT: 3000
-
-      - name: Wait for the app to be ready
-        run: npx wait-on http://localhost:3000
 
       - name: Run Cypress tests
-        run: pnpm cypress
+        run: |
+          pnpm run dev &
+          npx wait-on http://localhost:3000
+          pnpm cypress
