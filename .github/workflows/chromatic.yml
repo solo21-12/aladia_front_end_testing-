@@ -1,37 +1,19 @@
-name: Chromatic
+name: Cypress Tests using Cypress Docker Image
 
-on:
-  pull_request:
-    branches:
-      - main
+on: push
 
 jobs:
-  chromatic:
-    name: Run Chromatic
-    runs-on: ubuntu-latest
-
+  cypress-run:
+    runs-on: ubuntu-22.04
+    container:
+      image: cypress/browsers:node-20.14.0-chrome-126.0.6478.114-1-ff-127.0.1-edge-126.0.2592.61-1
+      options: --user 1001
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
         with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run Chromatic
-        uses: chromaui/action@latest
-        with:
-          projectToken: ${{ secrets.CHROMATIC_NEW_PROJECT_TOKEN }}
-          exitZeroOnChanges: true
-          onlyChanged: true
-          zip: true
-          
+          build: npm run build
+          start: npm start
+          browser: chrome
