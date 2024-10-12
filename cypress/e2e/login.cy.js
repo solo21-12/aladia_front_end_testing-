@@ -2,7 +2,7 @@ describe("template spec", () => {
   /* ==== Test Created with Cypress Studio ==== */
   it("login user", function() {
     /* ==== Generated with Cypress Studio ==== */
-    cy.visit("/");
+    cy.visit("http://localhost:3000");
     cy.wait(500);
 
     // Take a snapshot of the initial page load
