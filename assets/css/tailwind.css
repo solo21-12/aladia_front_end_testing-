@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#101010] text-white;
+}
+
+@layer components {
+  .gradient {
+    background: linear-gradient(
+      15deg,
+      #fff0 9.55%,
+      #fff0 30.28%,
+      #fff6,
+      #fff0 41.58%,
+      #fff0 59.02%,
+      #fff 67.97%,
+      #fff0 74.56%,
+      #fff
+    );
+  }
+
+  .gradient_gold {
+    background: transparent
+      linear-gradient(
+        134deg,
+        #bf953f,
+        #fcf6ba 22%,
+        #b38738 52%,
+        #fbf6b7 79%,
+        #aa771c
+      )
+      0 0 no-repeat padding-box;
+  }
+
+  .bg-gradient-top {
+    background: transparent
+      linear-gradient(90deg, transparent, #fff 50%, transparent) 0 0 no-repeat
+      padding-box;
+  }
+
+  .bg-gradient-left {
+    background: transparent
+      linear-gradient(180deg, transparent, #fff 50%, transparent) 0 0 no-repeat
+      padding-box;
+  }
+
+  .input-field:focus ~ .placeholder-text {
+    transform: scale(0.85);
+    color: gray;
+  }
+
+  .input-field:focus {
+    background-color: #e0e0e0;
+  }
+
+  .placeholder-text {
+    transition: all 0.3s ease;
+  }
+
+  /* Optional styling for disabled state */
+  .input-field:disabled {
+    background-color: #f0f0f0;
+    /* Lighter background for disabled input */
+    cursor: not-allowed;
+    /* Change cursor to indicate disabled */
+    color: gray;
+    /* Change text color to gray */
+  }
+
+  .loader {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
+}
