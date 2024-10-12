@@ -1,11 +1,13 @@
 /* ==== Test Created with Cypress Studio ==== */
-it("register_user", function () {
+it("register_user", function() {
   /* ==== Generated with Cypress Studio ==== */
-  cy.visit("http://localhost:3000/");
+  cy.visit("/");
   cy.wait(500);
   cy.document().toMatchImageSnapshot();
 
-  cy.get("#join-us-button").should("be.visible").click();
+  cy.get("#join-us-button")
+    .should("be.visible")
+    .click();
   cy.document().toMatchImageSnapshot();
 
   cy.get(".input-field").clear("d");
