@@ -15,18 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code from the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Install pnpm globally
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Install project dependencies using pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Build the Nuxt project
       - name: Build Nuxt project
         run: pnpm run build

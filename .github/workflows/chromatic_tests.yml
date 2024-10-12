@@ -1,4 +1,4 @@
-name: Chromatic Tests
+name: Chromatic Visual Regression
 
 on:
   push:
