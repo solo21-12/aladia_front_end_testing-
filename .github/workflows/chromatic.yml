@@ -61,13 +61,13 @@ jobs:
         run: pnpm install
 
       - name: Start server
-        run: pnpm run dev &
-        # No need to specify a working directory as you are in the root directory
+        run: pnpm run dev -- --port 3001 &
 
+        # No need to specify a working directory as you are in the root directory
       - name: Wait for server to be ready
         run: |
           for i in {1..20}; do
-            if curl -s http://localhost:3000; then
+            if curl -s http://localhost:3001; then
               echo "Server is up!"
               break
             else
