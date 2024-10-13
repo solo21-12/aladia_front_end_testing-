@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppMoreInfo from "../components/organisms/AppMoreInfo.vue";
+import AppMoreInfo from "../../components/organisms/AppMoreInfo.vue";
 import { useUserStore } from "@/stores/userStore";
 import { defineComponent } from "vue";
 

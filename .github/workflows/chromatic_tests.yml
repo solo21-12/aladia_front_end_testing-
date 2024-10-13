@@ -7,12 +7,10 @@ on:
   pull_request:
     branches:
       - main
-    types: [opened, synchronize, reopened]
-  workflow_dispatch:
 
 jobs:
-  run-chromatic:
-    name: Chromatic Visual Regression
+  chromatic:
+    name: Run Chromatic
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +18,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -27,5 +30,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Publish to Chromatic
-        run: pnpm run chromatic -- --auto-accept-changes
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_NEW_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+          onlyChanged: true
+          zip: true

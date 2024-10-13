@@ -8,7 +8,6 @@
 </template>
 
 <script lang="ts">
-import NuxtLink from 'nuxt-link';
 
 export default {
     name: 'SmallText',

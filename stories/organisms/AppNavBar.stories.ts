@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppNavBar from "../components/organisms/AppNavBar.vue";
+import AppNavBar from "../../components/organisms/AppNavBar.vue";
 
 const meta: Meta<typeof AppNavBar> = {
   title: "Organisms/AppNavBar",
