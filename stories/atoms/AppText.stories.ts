@@ -14,9 +14,9 @@ export default {
     isLink: { control: 'boolean' },
     link: { control: 'text' },
   },
-} as Meta<typeof AppText>;
+} as Meta
 
-const Template: StoryFn<typeof AppText> = (args) => ({
+const Template: StoryFn= (args) => ({
   components: { AppText },
   setup() {
     return { args };
