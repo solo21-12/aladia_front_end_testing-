@@ -18,7 +18,7 @@
         </div>
 
         <!-- Display validation error message -->
-        <p v-if="error" class="text-red-500 text-xs mt-1 absolute left-0 bottom-[-20px]">{{ error }}</p>
+        <p v-if="error" id="error_msg" class="text-red-500 text-xs mt-1 absolute left-0  -bottom-[20px]">{{ error }}</p>
     </div>
 </template>
 
