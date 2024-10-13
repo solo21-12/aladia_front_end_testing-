@@ -18,9 +18,9 @@ it("register_user", function() {
   cy.get(".flex-col > .gap-2 > .flex").click();
   cy.get('[data-testid="name-input"] > .input-field').type("test");
   cy.get('[data-testid="surname-input"] > .input-field').type("user");
-  cy.get('[data-testid="password-input"] > .input-field').type("password");
+  cy.get('[data-testid="password-input"] > .input-field').type("password#856@");
   cy.get('[data-testid="confirm-password-input"] > .input-field').type(
-    "password"
+    "password#856@"
   );
   cy.get("#submit-button").click();
   cy.document().toMatchImageSnapshot();
