@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppSocialButton from "../components/atoms/AppSocialButton.vue";
+import AppSocialButton from "../../components/atoms/AppSocialButton.vue";
 
 const meta: Meta<typeof AppSocialButton> = {
   title: "Atoms/AppSocialButton",

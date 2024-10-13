@@ -1,6 +1,6 @@
 <template>
     <div id="more_info"
-        class="text-sm relative bottom-0 left-0 right-0 top-0 z-[90] flex h-full w-full items-center justify-center bg-black/40 backdrop-blur py-1">
+        class="text-sm relative bottom-0 left-0 right-0 top-0 z-[90] flex h-full w-full items-center justify-center bg-black/40 backdrop-blur">
         <div
             class="relative -mt-20 flex h-[40rem] w-[26rem] flex-col rounded-md border border-white/10 bg-black/50 backdrop-blur transition-all duration-300">
             <div class="relative z-10 h-full p-5 text-13">
@@ -48,11 +48,12 @@
 
                         <p v-if="showError" class="text-red-500 mb-2">Please fill all fields and accept the terms.</p>
 
-                        <AppSubmitButton :isDisabled="!isFormValid" @click="handleSubmit" />
 
-                        <NuxtLink to="/" class="cursor-pointer text-center text-white/40 text-sm">
-                            Terms & Conditions
-                        </NuxtLink>
+                        <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"
+                            :isDisabled="!isFormValid" @click="handleSubmit" />
+
+                        <AppText text="Terms & Conditions" :isLink="true" link="/" class="mt-2" />
+
                     </div>
                 </div>
             </div>
@@ -66,14 +67,18 @@ import { useUserStore } from '@/stores/userStore';
 import AppBackButton from '../atoms/AppBackButton.vue';
 import AppTextInput from '../atoms/AppTextInput.vue';
 import AppFileUploader from '../atoms/AppFileUploader.vue';
-import AppSubmitButton from '../atoms/AppSubmitButton.vue';
+import AppButton from '../atoms/AppButton.vue';
+import AppText from '../atoms/AppText.vue';
+import AppHeaderText from '../atoms/AppHeaderText.vue';
 
 export default {
     components: {
         AppBackButton,
         AppTextInput,
         AppFileUploader,
-        AppSubmitButton
+        AppButton,
+        AppText,
+        AppHeaderText
     },
 
     setup(props, { emit }) {

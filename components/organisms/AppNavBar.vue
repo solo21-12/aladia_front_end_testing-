@@ -10,21 +10,22 @@
             <AppSearchInput />
         </div>
         <div id="nav_wrapper">
-            <AppJoinUsButton @toggle-signup="toggleSignUp" data-id="join_us" />
+            <AppButton :buttonText="'Join Us'" :buttonVariant="'Gold'" icon="fa-solid fa-user-plus" :loading="false"
+                :isDisabled="false" @toggle-signup="toggleSignUp" data-id="join_us" />
         </div>
     </div>
 </template>
 
 <script>
 
-import AppJoinUsButton from '../atoms/AppJoinUsButton.vue';
+import AppButton from '../atoms/AppButton.vue';
 import AppSearchInput from '../atoms/AppSearchInput.vue';
 
 export default {
     name: 'MainHeader',
     components: {
         AppSearchInput,
-        AppJoinUsButton
+        AppButton
     },
     props: {
         isSignUpVisible: {

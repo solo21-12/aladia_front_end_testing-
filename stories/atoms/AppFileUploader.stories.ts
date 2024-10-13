@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppFileUploader from "../components/atoms/AppFileUploader.vue";
+import AppFileUploader from "../../components/atoms/AppFileUploader.vue";
 
 const meta: Meta<typeof AppFileUploader> = {
   title: "Atoms/AppFileUploader",
@@ -13,7 +13,7 @@ type Story = StoryObj<typeof AppFileUploader>;
 // Default story
 export const Default: Story = {
   args: {
-    defaultImage: "https://via.placeholder.com/80", // Placeholder image URL
+    defaultImage: "https://develop.aladia.io/_nuxt/image.ChQ3biW9.png", // Placeholder image URL
   },
 };
 

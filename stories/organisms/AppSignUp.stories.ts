@@ -1,21 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppCodeAccepter from "../components/organisms/AppCodeAccepter.vue";
+import AppSignUp from "../../components/organisms/AppSignUp.vue";
 import { useUserStore } from "@/stores/userStore";
 import { defineComponent } from "vue";
 
-const meta: Meta<typeof AppCodeAccepter> = {
-  title: "Organisms/AppCodeAccepter",
-  component: AppCodeAccepter,
+// Define the meta for the component
+const meta: Meta<typeof AppSignUp> = {
+  title: "Organisms/AppSignUp",
+  component: AppSignUp,
   tags: ["autodocs"], // For autodocs generation
+  parameters: {
+    layout: "centered", // Optional: Centers the story layout in the Storybook canvas
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof AppCodeAccepter>;
+type Story = StoryObj<typeof AppSignUp>;
 
-// Mock user data
+// Mock user data for the userStore
 const mockCurrentUser = {
-  name: "John Doe",
   email: "johndoe@example.com",
+  name: "John",
   surname: "Doe",
   password: "password123",
   confirmPassword: "password123",
@@ -35,16 +39,8 @@ export const Default: Story = {
         setupMockUserStore(); // Apply the mocked userStore before rendering
         return {};
       },
-      components: { AppCodeAccepter },
-      template: "<AppCodeAccepter />", // Render the component
+      components: { AppSignUp },
+      template: "<AppSignUp />", // Render the component
     }),
   args: {},
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "The default state of the AppCodeAccepter component with mocked currentUser.",
-      },
-    },
-  },
 };

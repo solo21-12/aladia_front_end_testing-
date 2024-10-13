@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppTextInput from "../components/atoms/AppTextInput.vue";
+import AppTextInput from "../../components/atoms/AppTextInput.vue";
 
 const meta: Meta<typeof AppTextInput> = {
   title: "Atoms/AppTextInput",

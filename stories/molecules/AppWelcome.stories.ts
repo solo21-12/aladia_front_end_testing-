@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppWelcome from "../components/molecules/AppWelcome.vue";
+import AppWelcome from "../../components/molecules/AppWelcome.vue";
 
 const meta: Meta<typeof AppWelcome> = {
   title: "Molecules/AppWelcome",

@@ -14,12 +14,14 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue';
+
+export default defineComponent({
     name: 'AppBackButton',
     props: {
         onClick: {
-            type: Function,
+            type: Function as PropType<() => void>, // Define the prop type as a function
             default: null
         }
     },
@@ -31,5 +33,5 @@ export default {
             }
         }
     }
-}
+});
 </script>

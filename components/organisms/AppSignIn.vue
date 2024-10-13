@@ -1,19 +1,21 @@
 <script>
 import AppBackButton from '../atoms/AppBackButton.vue';
-import AppSubmitButton from '../atoms/AppSubmitButton.vue';
+import AppButton from '../atoms/AppButton.vue';
 import AppTextInput from '../atoms/AppTextInput.vue';
 import AppWelcome from '../molecules/AppWelcome.vue';
 import { useUserStore } from '@/stores/userStore';
+import AppText from '../atoms/AppText.vue';
 
 
 
 
 export default {
     components: {
-        AppSubmitButton,
+        AppButton,
         AppTextInput,
         AppWelcome,
-        AppBackButton
+        AppBackButton,
+        AppText
     },
     setup(props, { emit }) {
         const userState = useUserStore();
@@ -27,7 +29,7 @@ export default {
         };
 
         return {
-
+            handleSubmit,
             handleBackClick
         };
     }
@@ -49,11 +51,9 @@ export default {
                     <div class="mb-6 text-center">Enter your password</div>
                     <div class="mb-6 flex flex-col items-center px-4">
                         <AppTextInput placeholder="Password" type="password" iconClass="fa-solid fa-key" />
-                        <div class="mb-4 flex h-2 w-full justify-end text-center text-xs">
-                            <div class="cursor-pointer text-white/50 underline hover:text-white">
-                                Forgot Password? </div>
-                        </div>
-                        <AppSubmitButton />
+                        <AppText text="Forgot password?" :is-link="true" link="/" class="mb-4" />
+                        <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"
+                            :isDisabled="!isEmailEntered" @click="handleSubmit" />
 
                     </div>
                 </div>

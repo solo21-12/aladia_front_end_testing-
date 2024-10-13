@@ -4,12 +4,16 @@
             <div class="relative z-10 h-full p-5 text-13 bg-black/40">
                 <div class="pt-8">
                     <AppWelcome />
-                    <div class="mb-6 text-center">Enter your email</div>
+
+                    <AppText text="Enter your email" class="mb-4" />
                     <div class="mb-6 flex flex-col items-center px-4">
                         <AppTextInput placeholder="Email" iconClass="fa-solid fa-envelope"
                             v-model="userStore.currentUser.email" required data-testid="email-input" />
-                        <AppSubmitButton :isDisabled="!isEmailEntered" @click="handleSubmit" />
+                        <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"
+                            :isDisabled="!isEmailEntered" @click="handleSubmit" />
                         <AppSocial />
+                        <AppText text="Terms & Conditions" :isLink="true" link="/" class="mt-2" />
+
                     </div>
                 </div>
             </div>
@@ -20,17 +24,18 @@
 <script>
 import { computed } from 'vue';
 import { useUserStore } from '@/stores/userStore';
-import AppSubmitButton from '../atoms/AppSubmitButton.vue';
+import AppButton from '../atoms/AppButton.vue';
 import AppTextInput from '../atoms/AppTextInput.vue';
 import AppSocial from '../molecules/AppSocial.vue';
 import AppWelcome from '../molecules/AppWelcome.vue';
-
+import AppText from '../atoms/AppText.vue';
 export default {
     components: {
-        AppSubmitButton,
+        AppButton,
         AppTextInput,
         AppSocial,
-        AppWelcome
+        AppWelcome,
+        AppText
     },
 
     setup(props, { emit }) {

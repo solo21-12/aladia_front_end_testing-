@@ -1,22 +1,21 @@
-import AppMessage from "../components/organisms/AppMessage.vue";
-
 import type { Meta, StoryObj } from "@storybook/vue3";
+import AppCodeAccepter from "../../components/organisms/AppCodeAccepter.vue";
 import { useUserStore } from "@/stores/userStore";
 import { defineComponent } from "vue";
 
-const meta: Meta<typeof AppMessage> = {
-  title: "Organisms/AppMessage",
-  component: AppMessage,
+const meta: Meta<typeof AppCodeAccepter> = {
+  title: "Organisms/AppCodeAccepter",
+  component: AppCodeAccepter,
   tags: ["autodocs"], // For autodocs generation
 };
 
 export default meta;
-type Story = StoryObj<typeof AppMessage>;
+type Story = StoryObj<typeof AppCodeAccepter>;
 
-// Mock user data for userStore
+// Mock user data
 const mockCurrentUser = {
-  name: "Jane Doe",
-  email: "jane.doe@example.com",
+  name: "John Doe",
+  email: "johndoe@example.com",
   surname: "Doe",
   password: "password123",
   confirmPassword: "password123",
@@ -36,15 +35,15 @@ export const Default: Story = {
         setupMockUserStore(); // Apply the mocked userStore before rendering
         return {};
       },
-      components: { AppMessage },
-      template: "<AppMessage />", // Render the component
+      components: { AppCodeAccepter },
+      template: "<AppCodeAccepter />", // Render the component
     }),
   args: {},
   parameters: {
     docs: {
       description: {
         story:
-          "The default state of the AppMessage component with a mocked currentUser.",
+          "The default state of the AppCodeAccepter component with mocked currentUser.",
       },
     },
   },

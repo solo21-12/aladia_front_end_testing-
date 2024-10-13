@@ -1,4 +1,4 @@
-import AppBackButton from "../components/atoms/AppBackButton.vue";
+import AppBackButton from "../../components/atoms/AppBackButton.vue";
 
 import type { Meta, StoryObj } from "@storybook/vue3";
 

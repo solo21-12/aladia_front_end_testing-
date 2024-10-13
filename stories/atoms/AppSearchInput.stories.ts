@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppSearchInput from "../components/atoms/AppSearchInput.vue";
+import AppSearchInput from "../../components/atoms/AppSearchInput.vue";
 
 const meta: Meta<typeof AppSearchInput> = {
   title: "Atoms/AppSearchInput",

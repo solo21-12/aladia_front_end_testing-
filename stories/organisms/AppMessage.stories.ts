@@ -1,25 +1,22 @@
+import AppMessage from "../../components/organisms/AppMessage.vue";
+
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppSignUp from "../components/organisms/AppSignUp.vue";
 import { useUserStore } from "@/stores/userStore";
 import { defineComponent } from "vue";
 
-// Define the meta for the component
-const meta: Meta<typeof AppSignUp> = {
-  title: "Organisms/AppSignUp",
-  component: AppSignUp,
+const meta: Meta<typeof AppMessage> = {
+  title: "Organisms/AppMessage",
+  component: AppMessage,
   tags: ["autodocs"], // For autodocs generation
-  parameters: {
-    layout: "centered", // Optional: Centers the story layout in the Storybook canvas
-  },
 };
 
 export default meta;
-type Story = StoryObj<typeof AppSignUp>;
+type Story = StoryObj<typeof AppMessage>;
 
-// Mock user data for the userStore
+// Mock user data for userStore
 const mockCurrentUser = {
-  email: "johndoe@example.com",
-  name: "John",
+  name: "Jane Doe",
+  email: "jane.doe@example.com",
   surname: "Doe",
   password: "password123",
   confirmPassword: "password123",
@@ -39,8 +36,16 @@ export const Default: Story = {
         setupMockUserStore(); // Apply the mocked userStore before rendering
         return {};
       },
-      components: { AppSignUp },
-      template: "<AppSignUp />", // Render the component
+      components: { AppMessage },
+      template: "<AppMessage />", // Render the component
     }),
   args: {},
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The default state of the AppMessage component with a mocked currentUser.",
+      },
+    },
+  },
 };

@@ -1,4 +1,4 @@
-import AppCodeInput from "../components/atoms/AppCodeInput.vue";
+import AppCodeInput from "../../components/atoms/AppCodeInput.vue";
 import type { Meta, StoryObj } from "@storybook/vue3";
 import { userEvent } from "@storybook/test";
 

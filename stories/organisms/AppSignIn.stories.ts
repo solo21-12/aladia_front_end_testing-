@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AppSignIn from "../components/organisms/AppSignIn.vue";
+import AppSignIn from "../../components/organisms/AppSignIn.vue";
 
 const meta: Meta<typeof AppSignIn> = {
   title: "Organisms/AppSignIn",
