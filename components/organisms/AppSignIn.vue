@@ -24,13 +24,17 @@ export default {
             console.log("sign in")
         };
 
+        const handleForgotPasswordClick = () => {
+            emit('go-to-forgot-password');
+        };
         const handleBackClick = () => {
             emit('go-back');
         };
 
         return {
             handleSubmit,
-            handleBackClick
+            handleBackClick,
+            handleForgotPasswordClick
         };
     }
 }
@@ -50,8 +54,17 @@ export default {
                     </div>
                     <div class="mb-6 text-center">Enter your password</div>
                     <div class="mb-6 flex flex-col items-center px-4">
-                        <AppTextInput placeholder="Password" type="password" iconClass="fa-solid fa-key" />
-                        <AppText text="Forgot password?" :is-link="true" link="/" class="mb-4" />
+                        <AppTextInput placeholder="Password" type="password" iconClass="fa-solid fa-key"
+                            class=" mb-3" />
+
+                        <div data-v-647ab1ac="" class=" flex w-full justify-end text-center"
+                            :onclick="handleForgotPasswordClick">
+
+
+                            <AppText text="Forgot password?" :is-link="false"
+                                class="mb-4 text-right hover:underline hover:text-white hover:cursor-pointer" />
+                        </div>
+
                         <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"
                             :isDisabled="!isEmailEntered" @click="handleSubmit" />
 

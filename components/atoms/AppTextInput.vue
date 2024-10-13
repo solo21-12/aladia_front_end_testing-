@@ -1,5 +1,5 @@
 <template>
-    <div :class="['group bg-white relative mb-6 flex h-10 w-full rounded transition-all', isTyping ? ' opacity-80' : ' opacity-100']"
+    <div :class="['group bg-white relative flex h-10 w-full rounded transition-all', isTyping ? ' opacity-80' : ' opacity-100']"
         id="text_input">
         <div class="flex w-10 items-center justify-center text-base text-black/70">
             <i :class="iconClass"></i>

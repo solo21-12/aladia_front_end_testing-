@@ -9,7 +9,7 @@
 
                     <div class="mb-6 flex flex-col items-center px-4">
                         <!-- Updated AppTextInput with validation -->
-                        <AppTextInput placeholder="Email" iconClass="fa-solid fa-envelope"
+                        <AppTextInput class=" mb-6" placeholder="Email" iconClass="fa-solid fa-envelope"
                             v-model="userStore.currentUser.email" :rules="emailRules" required
                             data-testid="email-input" />
                         <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"

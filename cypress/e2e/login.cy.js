@@ -53,6 +53,12 @@ describe("template spec", () => {
     // Take a final snapshot after submitting the verification code
     cy.document().toMatchImageSnapshot();
 
+    cy.get("body").click(0, 0);
+    cy.get(".relative > span").click();
+    cy.get("#submit-button > .z-0 > .gradient").click();
+
+    cy.document().toMatchImageSnapshot();
+
     /* ==== End Cypress Studio ==== */
   });
 });

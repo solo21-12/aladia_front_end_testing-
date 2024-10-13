@@ -22,7 +22,7 @@
 
                         <div class="mb-4 flex items-center gap-2">
                             <div @click="toggleCheckbox"
-                                :class="['flex h-4 w-4 cursor-pointer items-center justify-center rounded border pt-0.5 transition-all ', isChecked ? 'border-white bg-white' : 'border-red-500 bg-transparent']">
+                                :class="['flex h-4 w-4 cursor-pointer items-center justify-center rounded border pt-0.5 transition-all  bg-white', isChecked ? 'border-white bg-white' : 'border-red-500']">
                                 <i v-if="isChecked" class="fa-solid fa-check text-sm text-black"></i>
                             </div>
                             <div class="text-xs text-white/70">
@@ -35,18 +35,18 @@
 
                         <div class="mb-4 text-center text-xs">Enter your details</div>
 
-                        <AppTextInput placeholder="Name" iconClass="fa-solid fa-user"
+                        <AppTextInput class=" mb-6" placeholder="Name" iconClass="fa-solid fa-user"
                             v-model="userStore.currentUser.name" :rules="nameRules" data-testid="name-input" />
-                        <AppTextInput placeholder="Surname" iconClass="fa-solid fa-user"
+                        <AppTextInput class=" mb-6" placeholder="Surname" iconClass="fa-solid fa-user"
                             v-model="userStore.currentUser.surname" :rules="surnameRules" data-testid="surname-input" />
-                        <AppTextInput placeholder="Email" iconClass="fa-solid fa-envelope"
+                        <AppTextInput class=" mb-6" placeholder="Email" iconClass="fa-solid fa-envelope"
                             v-model="userStore.currentUser.email" required data-testid="email-input" />
-                        <AppTextInput placeholder="Password" type="password" iconClass="fa-solid fa-key"
+                        <AppTextInput class=" mb-6" placeholder="Password" type="password" iconClass="fa-solid fa-key"
                             v-model="userStore.currentUser.password" :rules="passwordRules"
                             data-testid="password-input" />
-                        <AppTextInput placeholder="Confirm Password" type="password" iconClass="fa-solid fa-key"
-                            v-model="userStore.currentUser.confirmPassword" :rules="confirmPasswordRules"
-                            data-testid="confirm-password-input" />
+                        <AppTextInput class=" mb-6" placeholder="Confirm Password" type="password"
+                            iconClass="fa-solid fa-key" v-model="userStore.currentUser.confirmPassword"
+                            :rules="confirmPasswordRules" data-testid="confirm-password-input" />
 
 
                         <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"

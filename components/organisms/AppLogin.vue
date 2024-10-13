@@ -13,7 +13,8 @@
 
 
             <component :is="currentPage" @go-to-more-details="showMoreDetails" @go-back="showSignUp"
-                @go-to-code-accepter="acceptCode" @showMessage="showMessage" @go-to-sign-in="showSignIn" />
+                @go-to-code-accepter="acceptCode" @showMessage="showMessage" @go-to-sign-in="showSignIn"
+                @go-to-forgot-password="showForgotPassword" @go-to-recovery-message="showRecoveryMessage" />
         </div>
     </div>
 </template>
@@ -24,26 +25,29 @@ import AppCodeAccepter from "../organisms/AppCodeAccepter.vue";
 import AppSignUp from "../organisms/AppSignUp.vue";
 import AppMessage from "../organisms/AppMessage.vue";
 import AppSignIn from "../organisms/AppSignIn.vue";
-
+import AppForgotPassword from ".//AppForgotPassword.vue";
+import AppRecoveryMessage from "./AppRecoveryMessage.vue";
 export default {
     components: {
         AppSignUp,
         AppMoreInfo,
         AppCodeAccepter,
         AppMessage,
-        AppSignIn
+        AppSignIn,
+        AppForgotPassword,
+        AppRecoveryMessage
     },
     data() {
         return {
-            currentPage: 'AppSignUp' // Start on the Sign Up page
+            currentPage: 'AppSignUp'
         };
     },
     methods: {
         showMoreDetails() {
-            this.currentPage = 'AppMoreInfo'; // Navigate to more info
+            this.currentPage = 'AppMoreInfo';
         },
         showSignUp() {
-            this.currentPage = 'AppSignUp'; // Return to sign up
+            this.currentPage = 'AppSignUp';
         },
         acceptCode() {
             this.currentPage = 'AppCodeAccepter'; // Proceed to code acceptance
@@ -53,6 +57,12 @@ export default {
         },
         showSignIn() {
             this.currentPage = 'AppSignIn'; // Navigate to sign in
+        },
+        showForgotPassword() {
+            this.currentPage = 'AppForgotPassword'; // Navigate to forgot password
+        },
+        showRecoveryMessage() {
+            this.currentPage = 'AppRecoveryMessage'; // Show recovery message
         }
     }
 }

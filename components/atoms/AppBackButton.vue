@@ -1,6 +1,6 @@
 <template>
     <div @click="handleClick"
-        class="next-icon flex h-8 cursor-pointer items-center justify-center gap-2 pb-4 transition-all active:scale-95">
+        class="next-icon flex h-8 cursor-pointer items-center justify-center gap-2 pb-4 transition-all active:scale-95 text-sm">
         <div class="inline-flex items-center justify-center pt-0.5 rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" class="octicon arrow-symbol-mktg" width="16" height="16"
                 viewBox="0 0 16 16" fill="none">
