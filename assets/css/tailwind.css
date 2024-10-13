@@ -77,4 +77,9 @@ body {
     height: 20px;
     animation: spin 1s linear infinite;
   }
+
+  .cursor-not-allowed {
+    cursor: not-allowed;
+    background: transparent;
+  }
 }

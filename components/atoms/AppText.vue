@@ -8,9 +8,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
 
-export default defineComponent({
+export default {
     name: 'SmallText',
     props: {
         text: {
@@ -26,5 +25,5 @@ export default defineComponent({
             default: '#',
         },
     },
-});
+};
 </script>

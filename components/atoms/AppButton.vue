@@ -87,9 +87,4 @@ export default {
         transform: rotate(360deg);
     }
 }
-
-.cursor-not-allowed {
-    cursor: not-allowed;
-    background: transparent;
-}
 </style>
