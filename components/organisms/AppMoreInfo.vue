@@ -27,9 +27,9 @@
                             </div>
                             <div class="text-xs text-white/70">
                                 I accept
-                                <NuxtLink to="/" class="underline text-white"> Terms & Conditions </NuxtLink>
+                                <a href="/" class="underline text-white"> Terms & Conditions </a>
                                 and
-                                <NuxtLink to="/" class="underline text-white"> Privacy Policy </NuxtLink>
+                                <a href="/" class="underline text-white"> Privacy Policy </a>
                             </div>
                         </div>
 

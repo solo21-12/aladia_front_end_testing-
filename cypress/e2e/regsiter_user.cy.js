@@ -12,7 +12,7 @@ it("register_user", function() {
 
   cy.get(".input-field").clear("d");
   cy.get(".input-field").type("test@gmail.com");
-  cy.get("#submit-button > .gradient").click();
+  cy.get("#submit-button").click();
   cy.document().toMatchImageSnapshot();
 
   cy.get(".flex-col > .gap-2 > .flex").click();
@@ -22,7 +22,7 @@ it("register_user", function() {
   cy.get('[data-testid="confirm-password-input"] > .input-field').type(
     "password"
   );
-  cy.get("#submit-button > .gradient").click();
+  cy.get("#submit-button").click();
   cy.document().toMatchImageSnapshot();
   cy.get('[data-testid="code-input-0"]').clear("1");
   cy.get('[data-testid="code-input-0"]').type("1");

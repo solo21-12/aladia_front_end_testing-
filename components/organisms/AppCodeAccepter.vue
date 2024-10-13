@@ -23,8 +23,8 @@
                     <div class="mb-8 flex justify-center text-xs text-white/50">
                         Didn't receive any email?
                     </div>
-                    <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"
-                        :isDisabled="!isEmailEntered" @click="submitCode" data-id="submit_code" />
+                    <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false" :isDisabled="false"
+                        @click="submitCode" data-id="submit_code" />
 
                 </div>
             </div>

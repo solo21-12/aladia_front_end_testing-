@@ -15,7 +15,7 @@ describe("template spec", () => {
 
     cy.get(".input-field").clear("example@test.com");
     cy.get(".input-field").type("example@test.com");
-    cy.get("#submit-button > .gradient").click();
+    cy.get("#submit-button").click();
 
     // Take a snapshot after submitting the email
     cy.document().toMatchImageSnapshot();
@@ -31,7 +31,7 @@ describe("template spec", () => {
     cy.get('[data-testid="confirm-password-input"] > .input-field').type(
       "password"
     );
-    cy.get("#submit-button > .gradient").click();
+    cy.get("#submit-button").click();
 
     // Take a snapshot after submitting the form
     cy.document().toMatchImageSnapshot();
@@ -48,7 +48,7 @@ describe("template spec", () => {
     cy.get('[data-testid="code-input-4"]').type("5");
     cy.get('[data-testid="code-input-5"]').clear("6");
     cy.get('[data-testid="code-input-5"]').type("6");
-    cy.get("#submit-button > .gradient").click();
+    cy.get("#submit-button").click();
 
     // Take a final snapshot after submitting the verification code
     cy.document().toMatchImageSnapshot();
