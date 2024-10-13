@@ -16,6 +16,8 @@ export const Default: Story = {
     placeholder: "Enter your name",
     iconClass: "fa-solid fa-user",
     disabled: false,
+    rules: [(value: string) => !!value || 'Name is required'],
+    modelValue: '',
   },
 };
 
@@ -26,6 +28,8 @@ export const Password: Story = {
     placeholder: "Enter your password",
     iconClass: "fa-solid fa-lock",
     disabled: false,
+    rules: [(value: string) => value.length >= 6 || 'Password must be at least 6 characters'],
+    modelValue: '',
   },
 };
 
@@ -36,6 +40,11 @@ export const Customized: Story = {
     iconClass: "fa-solid fa-envelope",
     maxlength: 50,
     disabled: false,
+    rules: [
+      (value: string) => !!value || 'Email is required',
+      (value: string) => /\S+@\S+\.\S+/.test(value) || 'Please enter a valid email',
+    ],
+    modelValue: '',
   },
 };
 
@@ -44,7 +53,8 @@ export const Disabled: Story = {
   args: {
     placeholder: "Disabled input",
     iconClass: "fa-solid fa-ban",
-    disabled: true, // Disabled state
+    disabled: true,
+    modelValue: '',
   },
   parameters: {
     docs: {
@@ -55,3 +65,6 @@ export const Disabled: Story = {
     },
   },
 };
+
+
+

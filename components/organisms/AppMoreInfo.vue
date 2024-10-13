@@ -22,7 +22,7 @@
 
                         <div class="mb-4 flex items-center gap-2">
                             <div @click="toggleCheckbox"
-                                :class="['flex h-4 w-4 cursor-pointer items-center justify-center rounded border pt-0.5 transition-all bg-white  ', isChecked ? 'border-white' : 'border-white/50']">
+                                :class="['flex h-4 w-4 cursor-pointer items-center justify-center rounded border pt-0.5 transition-all ', isChecked ? 'border-white bg-white' : 'border-red-500 bg-transparent']">
                                 <i v-if="isChecked" class="fa-solid fa-check text-sm text-black"></i>
                             </div>
                             <div class="text-xs text-white/70">
@@ -36,17 +36,17 @@
                         <div class="mb-4 text-center text-xs">Enter your details</div>
 
                         <AppTextInput placeholder="Name" iconClass="fa-solid fa-user"
-                            v-model="userStore.currentUser.name" data-testid="name-input" />
+                            v-model="userStore.currentUser.name" :rules="nameRules" data-testid="name-input" />
                         <AppTextInput placeholder="Surname" iconClass="fa-solid fa-user"
-                            v-model="userStore.currentUser.surname" data-testid="surname-input" />
+                            v-model="userStore.currentUser.surname" :rules="surnameRules" data-testid="surname-input" />
                         <AppTextInput placeholder="Email" iconClass="fa-solid fa-envelope"
-                            v-model="userStore.currentUser.email" data-testid="email-input" />
+                            v-model="userStore.currentUser.email" required data-testid="email-input" />
                         <AppTextInput placeholder="Password" type="password" iconClass="fa-solid fa-key"
-                            v-model="userStore.currentUser.password" data-testid="password-input" />
+                            v-model="userStore.currentUser.password" :rules="passwordRules"
+                            data-testid="password-input" />
                         <AppTextInput placeholder="Confirm Password" type="password" iconClass="fa-solid fa-key"
-                            v-model="userStore.currentUser.confirmPassword" data-testid="confirm-password-input" />
-
-                        <p v-if="showError" class="text-red-500 mb-2">Please fill all fields and accept the terms.</p>
+                            v-model="userStore.currentUser.confirmPassword" :rules="confirmPasswordRules"
+                            data-testid="confirm-password-input" />
 
 
                         <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"
@@ -62,14 +62,13 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useUserStore } from '@/stores/userStore';
 import AppBackButton from '../atoms/AppBackButton.vue';
 import AppTextInput from '../atoms/AppTextInput.vue';
 import AppFileUploader from '../atoms/AppFileUploader.vue';
 import AppButton from '../atoms/AppButton.vue';
 import AppText from '../atoms/AppText.vue';
-import AppHeaderText from '../atoms/AppHeaderText.vue';
 
 export default {
     components: {
@@ -77,19 +76,48 @@ export default {
         AppTextInput,
         AppFileUploader,
         AppButton,
-        AppText,
-        AppHeaderText
+        AppText
     },
 
     setup(props, { emit }) {
         const userStore = useUserStore();
         const isChecked = ref(false);
         const showError = ref(false);
+        const passwordFeedback = ref([]);
+
+        const nameRules = [(v) => (v && v.length >= 2) || 'Name must have at least 2 characters'];
+        const surnameRules = [(v) => (v && v.length >= 2) || 'Surname must have at least 2 characters'];
+
+        const passwordRules = [
+            (v) => (v && v.length >= 8) || 'Password must be at least 8 characters',
+            (v) => /[A-Z]/.test(v) || 'Password must contain at least one uppercase letter',
+            (v) => /\d/.test(v) || 'Password must contain at least one number',
+            (v) => /[!@#$%^&*(),.?":{}|<>]/.test(v) || 'Password must contain at least one symbol'
+        ];
+
+        const confirmPasswordRules = [
+            (v) => v === userStore.currentUser.password || 'Passwords must match'
+        ];
+
+        // Watch the password to give feedback while typing
+        watch(() => userStore.currentUser.password, (newPassword) => {
+            passwordFeedback.value = [
+                { message: 'At least 8 characters', valid: newPassword.length >= 8 },
+                { message: 'Contains uppercase letter', valid: /[A-Z]/.test(newPassword) },
+                { message: 'Contains number', valid: /\d/.test(newPassword) },
+                { message: 'Contains symbol', valid: /[!@#$%^&*(),.?":{}|<>]/.test(newPassword) }
+            ];
+        });
 
         const isFormValid = computed(() => {
-            return userStore.currentUser.name && userStore.currentUser.surname &&
-                userStore.currentUser.email && userStore.currentUser.password &&
-                userStore.currentUser.confirmPassword && isChecked.value;
+            return (
+                userStore.currentUser.name.length >= 2 &&
+                userStore.currentUser.surname.length >= 2 &&
+                userStore.currentUser.email &&
+                userStore.currentUser.password &&
+                userStore.currentUser.confirmPassword === userStore.currentUser.password &&
+                isChecked.value
+            );
         });
 
         const handleSubmit = () => {
@@ -111,7 +139,12 @@ export default {
             handleBackClick,
             isChecked,
             showError,
-            isFormValid
+            isFormValid,
+            passwordFeedback,
+            nameRules,
+            surnameRules,
+            passwordRules,
+            confirmPasswordRules
         };
     },
     methods: {

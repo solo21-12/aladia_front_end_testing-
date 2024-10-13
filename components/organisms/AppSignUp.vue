@@ -5,15 +5,18 @@
                 <div class="pt-8">
                     <AppWelcome />
 
-                    <AppText text="Enter your email" class="mb-4" />
+                    <AppText text="Enter your email" class="mb-4 text-center" />
+
                     <div class="mb-6 flex flex-col items-center px-4">
+                        <!-- Updated AppTextInput with validation -->
                         <AppTextInput placeholder="Email" iconClass="fa-solid fa-envelope"
-                            v-model="userStore.currentUser.email" required data-testid="email-input" />
+                            v-model="userStore.currentUser.email" :rules="emailRules" required
+                            data-testid="email-input" />
                         <AppButton :buttonText="'Enter'" :buttonVariant="'Gray'" :loading="false"
-                            :isDisabled="!isEmailEntered" @click="handleSubmit" />
+                            :isDisabled="!isEmailValid" @click="handleSubmit" />
+
                         <AppSocial />
                         <AppText text="Terms & Conditions" :isLink="true" link="/" class="mt-2" />
-
                     </div>
                 </div>
             </div>
@@ -22,13 +25,14 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { ref, watch } from 'vue';
 import { useUserStore } from '@/stores/userStore';
 import AppButton from '../atoms/AppButton.vue';
 import AppTextInput from '../atoms/AppTextInput.vue';
 import AppSocial from '../molecules/AppSocial.vue';
 import AppWelcome from '../molecules/AppWelcome.vue';
 import AppText from '../atoms/AppText.vue';
+
 export default {
     components: {
         AppButton,
@@ -41,9 +45,24 @@ export default {
     setup(props, { emit }) {
         const userStore = useUserStore();
 
-        const isEmailEntered = computed(() => {
-            return !!userStore.currentUser.email;
-        });
+        // Email validation rules
+        const emailRules = [
+            (v) => !!v || 'Email is required',
+            (v) => /.+@.+\..+/.test(v) || 'Invalid email address'
+        ];
+
+        // Track if the email is valid
+        const isEmailValid = ref(false);
+
+        // Watch for changes in the email and validate it
+        watch(
+            () => userStore.currentUser.email,
+            (newEmail) => {
+                // Check if the new email is valid
+                isEmailValid.value = emailRules.every((rule) => rule(newEmail) === true);
+            },
+            { immediate: true } // Validate immediately on page load
+        );
 
         const handleSubmit = () => {
             userStore.checkEmailInDatabase();
@@ -57,8 +76,9 @@ export default {
 
         return {
             userStore,
-            isEmailEntered,
-            handleSubmit
+            isEmailValid,
+            handleSubmit,
+            emailRules
         };
     }
 };
