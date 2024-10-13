@@ -1,13 +1,14 @@
 <template>
     <div>
         <span v-if="!isLink" class="text-white/70">{{ text }}</span>
-        <NuxtLink v-else :to="link" class="text-white/70 hover:text-white hover:underline">
+        <a v-else :href="link" class="text-white/70 hover:text-white hover:underline">
             {{ text }}
-        </NuxtLink>
+        </a>
     </div>
 </template>
 
 <script lang="ts">
+import NuxtLink from 'nuxt-link';
 
 export default {
     name: 'SmallText',
