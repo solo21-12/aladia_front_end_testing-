@@ -1,4 +1,4 @@
-name: Cypress Test
+name: E2E Visual Regression Tests with Cypress
 on:
   push:
     branches:
