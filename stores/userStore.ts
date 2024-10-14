@@ -14,6 +14,7 @@ export const useUserStore = defineStore("userStore", {
     currentUser: {
       email: "",
       name: "",
+      
       surname: "",
       password: "",
       confirmPassword: "",
